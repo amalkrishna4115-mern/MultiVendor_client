@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Cart = () => {
   const navigate = useNavigate();
 
@@ -28,7 +30,7 @@ const fetchCart = async () => {
     const res =
       await axios.get(
 
-        "http://localhost:5000/api/cart/user",
+        `${API_URL}/api/cart/user`,
 
         {
           headers: {
@@ -114,7 +116,7 @@ const removeItem = async (id) => {
 
     await axios.delete(
 
-      `http://localhost:5000/api/cart/remove/${id}`,
+      `${API_URL}/api/cart/remove/${id}`,
 
       {
         headers: {
@@ -180,7 +182,7 @@ const validCartItems = cartItems.filter(
 >
 
   <img
-    src={`http://localhost:5000/uploads/${item.productId.image}`}
+    src={`${API_URL}/uploads/${item.productId.image}`}
     alt=""
   />
 

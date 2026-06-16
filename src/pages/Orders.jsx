@@ -4,6 +4,8 @@ import React, {useEffect,useState,} from "react";
 
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 
 const Orders = () => {
@@ -17,7 +19,7 @@ const Orders = () => {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/orders"
+        `${API_URL}/api/orders`
       );
 
       setOrders(res.data);
@@ -33,7 +35,7 @@ const Orders = () => {
   try {
 
     await axios.put(
-      `http://localhost:5000/api/orders/cancel/${id}`
+      `${API_URL}/api/orders/cancel/${id}`
     );
 
     alert("Order Cancelled");
@@ -84,14 +86,14 @@ const fetchOrders =
       ) {
 
         url =
-          "http://localhost:5000/api/orders/user";
+          `${API_URL}/api/orders/user`;
       }
 
       // VENDOR
       else {
 
         url =
-          "http://localhost:5000/api/orders/vendor";
+          `${API_URL}/api/orders/vendor`;
       }
 
 
@@ -125,7 +127,7 @@ const clearOrders =
 
       await axios.delete(
 
-        "http://localhost:5000/api/orders/clear"
+        `${API_URL}/api/orders/clear`
       );
 
       setOrders([]);
@@ -170,7 +172,7 @@ const fetchVendorOrders =
     const res =
       await axios.get(
 
-        "http://localhost:5000/api/orders/vendor",
+        `${API_URL}/api/orders/vendor`,
 
         {
           headers: {
@@ -265,7 +267,7 @@ const fetchVendorOrders =
       <div key={index}>
 
         <img
-          src={`http://localhost:5000/uploads/${item.productId?.image}`}
+          src={`${API_URL}/uploads/${item.productId?.image}`}
           width="100"
           alt=""
         />

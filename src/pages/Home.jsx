@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Slider from "react-slick";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -72,7 +74,7 @@ const getProducts = async () => {
   try {
 
     const res = await axios.get(
-      "http://localhost:5000/api/products"
+      `${API_URL}/api/products`
     );
 
     setProducts(res.data);
@@ -119,7 +121,7 @@ const getCartCount = async () => {
     const res =
       await axios.get(
 
-        "http://localhost:5000/api/cart/user",
+        `${API_URL}/api/cart/user`,
 
         {
           headers: {
@@ -190,7 +192,7 @@ useEffect(() => {
     const res =
       await axios.post(
 
-        "http://localhost:5000/api/cart/add",
+        `${API_URL}/api/cart/add`,
 
         {
           productId: product._id,
@@ -398,7 +400,7 @@ useEffect(() => {
             <div className="product-card" key={product._id} onClick={() =>navigate("/product-details", {state: { product },})}>
 
              <img
-  src={`http://localhost:5000/uploads/${product.image}`}
+  src={`${API_URL}/uploads/${product.image}`}
   alt={product.name}
 />
 

@@ -20,7 +20,11 @@ const product = location.state?.product;
   }
 
   // SAMPLE PRODUCT
- 
+ const API_URL = import.meta.env.VITE_API_URL;
+
+ console.log("API_URL:", API_URL);
+console.log("Product:", product);
+console.log("Image:", product.image);
 
   // ADD TO CART
   const addToCart = () => {
@@ -76,9 +80,10 @@ const product = location.state?.product;
         {/* LEFT IMAGE */}
 
         <div className="product-image">
+          
 
          <img
-  src={`http://localhost:5000/uploads/${product.image}`}
+  src={`${API_URL}/uploads/${product.image}`}
   alt={product.name}
 />
 

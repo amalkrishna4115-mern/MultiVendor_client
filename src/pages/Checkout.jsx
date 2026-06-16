@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
   
 const Checkout = () => {
 
@@ -75,7 +77,7 @@ const [paymentMethod,
 
       await axios.post(
 
-        "http://localhost:5000/api/orders/create",
+        `${API_URL}/api/orders/create`,
 
         
         

@@ -5,7 +5,7 @@ import React, {
 
 import axios from "axios";
 
-
+const API_URL = import.meta.env.VITE_API_URL;
 
 const AdminDashboard = () => {
 
@@ -40,7 +40,7 @@ const deleteProduct = async (id) => {
   try {
 
     await axios.delete(
-      `http://localhost:5000/api/admin/product/${id}`
+      `${API_URL}/api/admin/product/${id}`
     );
 
     alert("Product Deleted");
@@ -60,7 +60,7 @@ const deleteProduct = async (id) => {
 
         const res =
           await axios.get(
-            "http://localhost:5000/api/admin/stats"
+            `${API_URL}/api/admin/stats`
           );
 
         setStats(res.data);
@@ -76,7 +76,7 @@ const deleteProduct = async (id) => {
   try {
 
     const res = await axios.get(
-      "http://localhost:5000/api/admin/products"
+      `${API_URL}/api/admin/products`
     );
 
     setProducts(res.data);
@@ -97,7 +97,7 @@ const deleteProduct = async (id) => {
 
         const res =
           await axios.get(
-            "http://localhost:5000/api/admin/vendors"
+            `${API_URL}/api/admin/vendors`
           );
 
         setVendors(res.data);
@@ -112,7 +112,7 @@ const deleteProduct = async (id) => {
   try {
 
     await axios.put(
-      `http://localhost:5000/api/admin/vendor/approve/${id}`
+      `${API_URL}/api/admin/vendor/approve/${id}`
     );
 
     alert("Vendor Approved");
@@ -128,7 +128,7 @@ const deleteProduct = async (id) => {
 const rejectVendor = async (id) => {
 
   await axios.put(
-    `http://localhost:5000/api/admin/vendor/reject/${id}`
+    `${API_URL}/api/admin/vendor/reject/${id}`
   );
 
   getVendors();
@@ -243,7 +243,7 @@ const rejectVendor = async (id) => {
     >
 
       <img
-        src={`http://localhost:5000/uploads/${product.image}`}
+        src={`${API_URL}/uploads/${product.image}`}
         alt={product.name}
         width="100"
       />

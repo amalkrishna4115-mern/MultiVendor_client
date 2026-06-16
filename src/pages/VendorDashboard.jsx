@@ -2,6 +2,7 @@ import React,{useEffect,useState,} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+const API_URL = import.meta.env.VITE_API_URL;
 
 
 
@@ -34,7 +35,7 @@ const [formData, setFormData] = useState({
 
 
     const res = await axios.get(
-      `http://localhost:5000/api/products?vendorId=${user._id}`
+      `${API_URL}/api/products?vendorId=${user._id}`
     );
 
 
@@ -57,7 +58,7 @@ const [formData, setFormData] = useState({
 
     const res = await axios.get(
 
-      "http://localhost:5000/api/orders/vendor",
+      `${API_URL}/api/orders/vendor`,
 
       {
         headers: {
@@ -181,7 +182,7 @@ const user = JSON.parse(
 
       await axios.put(
 
-        `http://localhost:5000/api/products/update/${editId}`,
+        `${API_URL}/api/products/update/${editId}`,
 
         data
       );
@@ -195,7 +196,7 @@ const user = JSON.parse(
 
       const token = localStorage.getItem("token");
 await axios.post(
-  "http://localhost:5000/api/products/add",
+  `${API_URL}/api/products/add`,
   data,
   {
     headers: {
@@ -265,7 +266,7 @@ const editProduct = (product) => {
   try {
 
     await axios.delete(
-      `http://localhost:5000/api/products/${id}`
+      `${API_URL}/api/products/${id}`
     );
 
     getProducts();
@@ -410,7 +411,7 @@ useEffect(() => {
                 >
 
                   <img
-  src={`http://localhost:5000/uploads/${product.image}`}
+  src={`${API_URL}/uploads/${product.image}`}
   alt={product.name}
 />
 
@@ -464,7 +465,7 @@ useEffect(() => {
     >
 
       <img  className="imgsale"
-        src={`http://localhost:5000/uploads/${order.productImage}`}
+        src={`${API_URL}/uploads/${order.productImage}`}
         alt={order.productName}
       />
 
