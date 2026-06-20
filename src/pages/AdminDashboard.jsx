@@ -277,11 +277,10 @@ const rejectVendor = async (id) => {
     >
 
       <img
-        src={`${API_URL}/uploads/${product.image}`}
-        alt={product.name}
-        width="100"
-      />
-
+  src={product.image}
+  alt={product.name}
+  width="100"
+/>
       <h3>{product.name}</h3>
 
       <p>₹ {product.price}</p>

@@ -182,10 +182,9 @@ const validCartItems = cartItems.filter(
 >
 
   <img
-    src={`${API_URL}/uploads/${item.productId.image}`}
-    alt=""
-  />
-
+  src={item.productId.image}
+  alt={item.productId.name}
+/>
   <div className="cart-details">
 
     <h3>

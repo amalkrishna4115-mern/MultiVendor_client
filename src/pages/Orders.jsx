@@ -267,10 +267,11 @@ const fetchVendorOrders =
       <div key={index}>
 
         <img
-          src={`${API_URL}/uploads/${item.productId?.image}`}
-          width="100"
-          alt=""
-        />
+  src={item.productId?.image}
+  width="100"
+  alt=""
+/>
+        
 
         <h3>
           {item.productId?.name}

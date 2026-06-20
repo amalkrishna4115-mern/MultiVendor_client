@@ -399,11 +399,10 @@ useEffect(() => {
             // <div className="product-card"  onClick={() =>navigate("/product-details")}>
             <div className="product-card" key={product._id} onClick={() =>navigate("/product-details", {state: { product },})}>
 
-             <img
-  src={`${API_URL}/uploads/${product.image}`}
+<img
+  src={product.image}
   alt={product.name}
 />
-
               <h3>{product.name}</h3>
 
               <p>₹ {product.price}</p>

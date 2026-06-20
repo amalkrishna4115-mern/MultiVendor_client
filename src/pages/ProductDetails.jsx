@@ -82,11 +82,10 @@ console.log("Image:", product.image);
         <div className="product-image">
           
 
-         <img
-  src={`${API_URL}/uploads/${product.image}`}
+   <img
+  src={product.image}
   alt={product.name}
 />
-
         </div>
 
 
