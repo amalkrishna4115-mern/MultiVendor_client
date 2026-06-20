@@ -301,6 +301,8 @@ useEffect(() => {
 
 }, []);
 
+console.log(products);
+
 
 
   return (
@@ -405,13 +407,14 @@ useEffect(() => {
             ) : (
               products.map((product) => (
 
+
                 <div
                   className="vendor-card"
                   key={product._id}
                 >
 
-                  <img
-  src={`${API_URL}/uploads/${product.image}`}
+  <img
+  src={product.image}
   alt={product.name}
 />
 
@@ -464,10 +467,11 @@ useEffect(() => {
       className="sale-card"
     >
 
-      <img  className="imgsale"
-        src={`${API_URL}/uploads/${order.productImage}`}
-        alt={order.productName}
-      />
+     <img
+  className="imgsale"
+  src={order.productImage}
+  alt={order.productName}
+/>
 
       <div>
 

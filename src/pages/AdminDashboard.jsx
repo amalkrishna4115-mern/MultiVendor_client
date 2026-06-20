@@ -3,6 +3,7 @@ import React, {
   useState,
 } from "react";
 
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -15,6 +16,8 @@ const AdminDashboard = () => {
   totalProducts: 0,
   totalOrders: 0,
 });
+
+
 
 const [products, setProducts] = useState([]);
 
@@ -87,9 +90,32 @@ const deleteProduct = async (id) => {
   }
 };
 
-    
+const deleteVendor = async (id) => {
 
-    
+  const confirmDelete = window.confirm(
+    "Are you sure you want to remove this vendor?"
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+
+    await axios.delete(
+      `${API_URL}/api/admin/vendor/${id}`
+    );
+
+    alert("Vendor Removed Successfully");
+
+    getVendors();
+    getProducts();
+
+  } catch (error) {
+
+    console.log(error);
+  }
+};
+
+   const navigate = useNavigate(); 
   const getVendors =
     async () => {
 
@@ -224,6 +250,14 @@ const rejectVendor = async (id) => {
       >
         Reject
       </button>
+      <button
+  className="delete-btn"
+  onClick={() =>
+    deleteVendor(vendor._id)
+  }
+>
+  Remove Vendor
+</button>
 
     </div>
 
@@ -294,6 +328,20 @@ const rejectVendor = async (id) => {
         </button>
 
       </div>
+
+      
+  
+
+  <button className="reject"
+    onClick={() => {
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      navigate("/login");
+    }}
+  >
+    Logout
+  </button>
+
 
     </div>
   );
