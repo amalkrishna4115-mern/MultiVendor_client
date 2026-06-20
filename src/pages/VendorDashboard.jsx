@@ -222,20 +222,14 @@ await axios.post(
 
   } catch (error) {
 
-  console.log(error);
+  console.log("FULL ERROR:", error);
 
-  if (error.response?.status === 403) {
+  console.log("RESPONSE:", error.response);
 
-    toast.error(
-      "You cannot add products until an admin approves your vendor account."
-    );
-
-    return;
-  }
+  console.log("DATA:", error.response?.data);
 
   toast.error(
-    error.response?.data?.message ||
-    "Failed to add product"
+    JSON.stringify(error.response?.data)
   );
 }
 };
